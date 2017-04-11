@@ -11,9 +11,11 @@ namespace WingtipToysMVC.Controllers
         private WingtipToysMVCContext db = new WingtipToysMVCContext();
 
         // GET: Produtos
-        public ActionResult Index()
+        public ActionResult Index(int? idCat)
         {
             var produtoes = db.Produtoes.Include(p => p._Categoria);
+            if (idCat.HasValue)
+             produtoes = produtoes.Where(p => p.CategoriaID == idCat.Value);
             return View(produtoes.ToList());
         }
 
@@ -58,13 +60,13 @@ namespace WingtipToysMVC.Controllers
         }
 
         // GET: Produtos/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id)//tem que ser nulabo
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = db.Produtoes.Find(id);
+            Produto produto = db.Produtoes.Find(id);//pesquisar pela chave
             if (produto == null)
             {
                 return HttpNotFound();

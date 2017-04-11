@@ -5,6 +5,9 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<div>
+ @Html.ActionLink("Criar Categorias", "Create")
+</div>
 
 <table class="table">
     <tr>
@@ -25,7 +28,13 @@
             <td>
                 @Html.DisplayFor(modelItem => cat.Descricao)
             </td>
-            <td></td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = cat.CategoriaID })
+                @Html.ActionLink("Detalhes", "Details", new { id = cat.CategoriaID })
+                @Html.ActionLink("Delete", "Index","Produtos", new {idCat = cat.CategoriaID}, null)
+
+
+            </td>
         </tr>
     }
 </table>
