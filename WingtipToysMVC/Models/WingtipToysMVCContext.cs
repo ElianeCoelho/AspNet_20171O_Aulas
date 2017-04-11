@@ -17,7 +17,12 @@ namespace WingtipToysMVC.Models
     
         public WingtipToysMVCContext() : base("name=WingtipToysMVCContext")
         {
+            DropCreateDatabaseIfModelChanges<WingtipToysMVCContext> initializer =
+                new DropCreateDatabaseIfModelChanges<WingtipToysMVCContext>();
+            Database.SetInitializer<WingtipToysMVCContext>(initializer);
         }
+
+        public System.Data.Entity.DbSet<WingtipToysMVC.Models.Produto> Produtoes { get; set; }
 
         public System.Data.Entity.DbSet<WingtipToysMVC.Models.Categoria> Categorias { get; set; }
     }

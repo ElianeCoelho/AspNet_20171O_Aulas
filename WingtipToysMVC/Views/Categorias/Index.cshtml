@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<WingtipToysMVC.Models.Categoria>
 
 @{
-    ViewBag.Title = "Lista categorias";
+    ViewBag.Title = "Categorias";
 }
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Criar Novo", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -19,21 +16,16 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CategoriaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoriaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CategoriaID })
-        </td>
-    </tr>
-}
-
+    @foreach (var cat in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => cat.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => cat.Descricao)
+            </td>
+            <td></td>
+        </tr>
+    }
 </table>
